@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование /deep/</title>
+    <style>
+        /* 
+            С помощью псевдо класса ::shadow можно стилизовать только дочерние элементы одного Shadow Root. 
+            При этом вложенные Shadow Root элементы и их дочерние элементы стилизоваться не будут.
+        */
+        
+        my-list /deep/ li {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <my-list>
+    </my-list>
+
+    <template id="list1">
+        <ul>
+            <li>Item 01</li>
+            <li>Item 02</li>
+            <li>Item 03</li>
+            <li>Item 04</li>
+            <li>Item 05</li>
+            <li>Item 06</li>
+            <li>Item 07</li>
+            <li>Item 08</li>
+        </ul>
+        <my-second-list></my-second-list>
+    </template>
+
+    <template id="list2">
+        <ul>
+            <li>Nested List Item 01</li>
+            <li>Nested List Item 02</li>
+            <li>Nested List Item 03</li>
+            <li>Nested List Item 04</li>
+            <li>Nested List Item 05</li>
+            <li>Nested List Item 06</li>
+            <li>Nested List Item 07</li>
+            <li>Nested List Item 08</li>
+        </ul>
+    </template>
+
+    <script>
+        var MyListProto = Object.create(HTMLDivElement.prototype);
+        MyListProto.createdCallback = function () {
+            var root = this.createShadowRoot();
+            var template = document.querySelector("#list1");
+            root.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("my-list", {
+            prototype: MyListProto
+        });
+
+        var MySecondListProto = Object.create(HTMLDivElement.prototype);
+        MySecondListProto.createdCallback = function () {
+            var root = this.createShadowRoot();
+            var template = document.querySelector("#list2");
+            root.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("my-second-list", {
+            prototype: MySecondListProto
+        });
+    </script>
+</body>
+</html>

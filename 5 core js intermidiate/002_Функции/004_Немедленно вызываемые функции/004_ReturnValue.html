@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Значение возвращаемое немедленно вызываемой функцией</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            // немедленно вызываемая функция может использоваться при задании значений
+            // свойств объектов.
+            name: (function () {
+                var fName = "Ivan",
+                    lName = "Ivanov";
+
+                return fName + " " + lName
+            }()),
+
+            sayHello: function () {
+                alert("Hello my name is " + this.name);
+            }
+        };
+    </script>
+</body>
+</html>
+

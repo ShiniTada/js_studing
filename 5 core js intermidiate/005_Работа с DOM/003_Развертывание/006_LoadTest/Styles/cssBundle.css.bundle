@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="cssBundle.css">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <file>/08_Развертывание/006_LoadTest/Styles/Site.css</file>
+  <file>/08_Развертывание/006_LoadTest/Styles/themes/base/jquery-ui.css</file>
+</bundle>

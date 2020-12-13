@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Расширение элементов</title>
+</head>
+<body>
+    <!--Элемент div расширенный пользовательским элементом itvdn-message-->
+    <div is="itvdn-message"></div>
+    
+    <script>
+        // Создание нового прототипа на основе прототипа элемента DIV
+        var ItvdnMessageBlockProto = Object.create(HTMLDivElement.prototype);
+
+        // Установка функции обратного вызова, которая будет определять содержимое расширенного элемента.
+        ItvdnMessageBlockProto.createdCallback = function () {
+            this.innerHTML = "<a href='http://itvdn.com/ru/Video/html5-and-css3'>HTML5 and CSS3</a>";
+            this.style.border = "1px solid gray";
+            this.style.padding = "15px";
+        };
+
+        // Регистрация пользовательского элемента как расширения для DIV
+        var ItvdnMessageBlock = document.registerElement("itvdn-message", {
+            prototype: ItvdnMessageBlockProto,
+            extends: "div"
+        });
+
+    </script>
+</body>
+</html>
+

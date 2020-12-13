@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Добавление новых свойств</title>
+</head>
+<body>
+    <script>
+        // К строковому объект можно добавить свойство.
+        var strObj = new String("Hello");
+        strObj.myProp = 123;
+        document.write(strObj.myProp); // 123
+
+        // Добавлять новые свойства к строковым значениям невозможно
+        var str = "world";
+        // Значение временно преобразовывается в объект, для которого добавляется свойство.
+        str.myProp = 123;
+        // При обращении к str значение повторно преобразовывается в объект.
+        // Так как это новый временный объект, то он не содержит свойства myProp
+        document.write(str.myProp); // undefined
+    </script>
+</body>
+</html>
+

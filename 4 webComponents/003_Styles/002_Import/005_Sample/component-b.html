@@ -1,0 +1,27 @@
+﻿<link rel="import" href="jquery.html" />
+
+<template>
+    <style>
+        div {
+            color: orange;
+        }
+    </style>
+    <div>Component B</div>
+</template>
+
+<script>
+    (function () {
+        var ComponentBProto = Object.create(HTMLElement.prototype);
+        var importDoc = document.currentScript.ownerDocument;
+
+        ComponentBProto.createdCallback = function () {
+            var template = importDoc.querySelector("template");
+            var root = this.createShadowRoot();
+            root.appendChild(document.importNode(template.content, true));
+        };
+
+        document.registerElement('component-b', {
+            prototype: ComponentBProto
+        });
+    })();
+</script>

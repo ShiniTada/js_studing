@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Возвращаемое конструктором значение</title>
+</head>
+<body>
+    <script>
+        // Если вызвать функцию конструктор без использования ключевого слова new,
+        // то в функции не будет создан новый пустой объект и вместо этого, переменная this
+        // будет ссылаться на глобальный объект window
+        // При создании конструкторов придерживайтесь стиля именования при котором 
+        // имя конструктора начинается с заглавной буквы.
+
+        function User(name) {
+            this.name = name;
+        }
+
+        var a = new User("Ivan");
+        document.write(a.name);
+
+        var b = User("Ivan"); 
+        document.write("<br />b = " + b);
+        document.write("<br />window.name = " + window.name);
+
+    </script>
+</body>
+</html>

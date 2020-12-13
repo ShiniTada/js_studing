@@ -1,0 +1,32 @@
+﻿<div>Hello world</div>
+
+<!-- Стиль будет применен к странице сразу, как только будет получен контент <link rel='import'/> -->
+<style>
+    h1 {
+        color: green;
+    }
+</style>
+
+<!-- Скрипт будет выполнен как только будет получен контент <link rel='import'/> -->
+<script>
+    console.log("hello world");
+</script>
+
+<!--
+    Содержимое шаблона останется не активным даже после загрузки <link rel='import'/>
+    Чтобы содержимое шаблона выполнилось его необходимо скопировать в DOM дерево.
+-->
+<template>
+    <div>hello from tempalte</div>
+
+    <script>
+        alert("hello from template");
+    </script>
+
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+</template>
+<div>hello</div>

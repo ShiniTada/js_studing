@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование. Шаблон №5</title>
+
+    <script>
+
+        // родительский конструктор
+        function Parent(name) {
+            this.name = name || "Adam";
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.say = function () {
+            alert("Hello my name is " + this.name);
+        }
+
+        function Child() {
+        }
+
+        inherit(Child, Parent);
+
+        function inherit(C, P) {
+            var F = function () { }; // пустая функция, которая будет использоваться для задания прототипа дочернему объекту
+            F.prototype = P.prototype; // установка для прототипа новой функции прототипа родителя
+            C.prototype = new F();
+        }
+
+        var kid = new Child();
+        kid.name = "Ivan";
+        kid.say();
+                
+    </script>
+</head>
+<body>
+</body>
+</html>

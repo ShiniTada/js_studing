@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Shadow DOM Selector</title>
+
+    <!--Стили будут применены только к Light DOM-->
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello from Light DOM</h1>
+    <div id="host"></div>
+
+    <template>
+        <h1>Hello world from Shadow DOM</h1>
+    </template>
+
+    <script>
+        var template = document.querySelector("tempalte");
+        var host = document.querySelector("#host");
+        var root = host.createShadowRoot();
+        root.appendChild(document.querySelector("template").content, true);
+
+        // Селектор вызванный на document вернет только те h1 элементы, которые находятся в Light DOM
+        console.log(document.querySelectorAll("h1"));
+
+        // При вызове селектора на root элементе будут извлечены h1 элементы из Shadow DOM
+        console.log(root.querySelectorAll("h1"));
+    </script>
+</body>
+</html>
+

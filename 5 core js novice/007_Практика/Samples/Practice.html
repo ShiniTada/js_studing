@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Practice</title>
+    <script>
+        /*
+
+         1. Создать Объект, допустим с названием MathFrameWork со следующей функцией в виде свойства объекта,
+         которую мы создали на 6 уроке. Данная функция должна помещать результат
+         в свойство объекта (напр. Result).
+
+         2. В данном Объекте создать два свойства которые принимают либо два числа, массива или объекта.
+         Два свойства заполняет сам пользователь. То есть нужно изменить тип данных и поместить данные в виде
+         массива или же числа.
+
+         3. Создать игру - квест:
+         3.1 Игра в жанре квест подразумевает: браузер задает вопрос - вы закрытый или полузакрытый ответ
+         (да или нет, или же варианты ответа).
+         3.2 Игра должна включать:
+         * жанр(приключения, экшн, рпг и тд) произвольный.
+         * Проверку на возраст.
+         * Привествие.
+         * Вопросы (от 6 до 10).
+         * Варианты развития сценария. Продумать самому!
+         3.3 Подсказки:
+         * в игре использовать условные конструкции if...else, switch...case, тернарный опертатор.
+         * для вывода использовать console.log()
+         * рассмотреть пример.
+
+         4. Рассмотреть пример создания игры арканоид с помощью связки HTML/CSS/JavaScript.
+
+         */
+
+        /* Task 1-2 */
+
+        MathFramework.a = [1, 2, 3];
+        MathFramework.b = [4, 5, 6];
+        MathFramework.Work('+');
+        alert(MathFramework.Result);
+
+        var MathFramework = {};
+        MathFramework.a = 0;
+        MathFramework.b = 0;
+        MathFramework.Work = function (oper) {
+            var a = MathFramework.a;
+            var b = MathFramework.b;
+            if (typeof (a) == 'number' && typeof (b) == 'number') {
+                a = parseFloat(a);
+                b = parseFloat(b);
+                switch (oper) {
+                    case '+':
+                        MathFramework.Result = a + b;
+                        break;
+                    case '-':
+                        MathFramework.Result = a - b;
+                        break;
+                    case '*':
+                        MathFramework.Result = a * b;
+                        break;
+                    case '/':
+                        if (b == 0) {
+                            return 'Делить на ноль нельзя';
+                        } else {
+                            MathFramework.Result = a / b;
+                        }
+                        ;
+                        break;
+                    default:
+                        alert('Вы ввели не вернный арифметичский знак!');
+                        break;
+                }
+            }
+            else if (a instanceof Array && b instanceof Array) {
+                // временный контейнер для результата
+                var tempResArray = [];
+                var length = 0;
+                if (a.length >= b.length) {
+                    length = a.length;
+                }
+                else {
+                    length = b.length;
+                }
+                for (var i = 0; i < length; i++) {
+                    var operand1 = parseFloat(a[i]);
+                    var operand2 = parseFloat(b[i]);
+                    if (isNaN(operand1)) {
+                        operand1 = 0;
+                    } else if (isNaN(operand2)) {
+                        operand1 = 0;
+                    }
+                    switch (oper) {
+                        case '+':
+                            tempResArray[i] = operand1 + operand2;
+                            break;
+                        case '-':
+                            tempResArray[i] = operand1 - operand2;
+                            break;
+                        case '*':
+                            tempResArray[i] = operand1 * operand2;
+                            break;
+                        case '/':
+                            if (operand2 == 0) {
+                                return alert('Делить на ноль нельзя');
+                            } else {
+                                tempResArray[i] = operand1 / operand2;
+                            }
+                            ;
+                            break;
+                        default:
+                            alert('Вы ввели не вернный арифметичский знак!');
+                            break;
+                    }
+                }
+                MathFramework.Result = tempResArray;
+            }
+            else if (a instanceof Object && b instanceof Object) {
+                // временный контейнер для результата
+                var tempResObject = {};
+
+                switch (oper) {
+                    case '+':
+                        tempResObject.resultA = a['a'] + b['a'];
+                        tempResObject.resultB = a['b'] + b['b'];
+                        break;
+                    case '-':
+                        tempResObject.resultA = a['a'] - b['a'];
+                        tempResObject.resultB = a['b'] - b['b'];
+                        break;
+                    case '*':
+                        tempResObject.resultA = a['a'] * b['a'];
+                        tempResObject.resultB = a['b'] * b['b'];
+                        break;
+                    case '/':
+                        if (b['a'] == 0 || b['b'] == 0) {
+                            return alert('Делить на ноль нельзя');
+                        } else {
+                            tempResObject.resultA = a['a'] / b['a'];
+                            tempResObject.resultB = a['b'] / b['b'];
+                        }
+                        ;
+                        break;
+                    default:
+                        alert('Вы ввели не вернный арифметичский знак!');
+                        break;
+                }
+                MathFramework.Result = tempResObject;
+            }
+        };
+
+
+        /* Task 3   КОНЦЕРТ С АЛЛОЙ */
+
+        var cnfrm = confirm('Вы готовы?');
+        if (cnfrm != false) {
+            var age = prompt('Сколько Вам лет', 'Укажите тут');
+            age = parseInt(age);
+            if (age < 13) {
+                document.write('<p>Вы слишком молоды, что бы играть в такие игры, но Вы можете играть!');
+            } else {
+                document.write('<p>Вы можете играть!');
+            };
+            document.write('<p>Вы на концерте Аллы Пугачевой и вы слышите слова песни \'Миллион алых роз!!!\'');
+            document.write('<p>Вдруг музыка останавливается и Алла спрашивает, \'Кто хочет на сцену?\'');
+            var userAnswer = prompt('Вы хотите к Алле на сцену?', 'Выберете Да или Нет');
+            if (userAnswer === 'Да') {
+                document.write('<p>Вы с Аллой кружитесь в невероятной ейфории!');
+            } else {
+                document.write('<p>Я не хожу на концерты, что бы танцевать, думаете Вы :)');
+            };
+            var feedback = prompt('<p>Вам понравилась игра от 0 до 10 ?');
+            if (feedback >= 8) {
+                document.write('<p>Спасибо, будем ждать Вас на концерте еще!');
+            } else {
+                document.write('<p>Буду практиковаться кодить еще!');
+            };
+        } else {
+            alert('Вы не захотели играть :(');
+            breake;
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

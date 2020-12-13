@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Host Pseudo Selector</title>
+</head>
+<body>
+    <div id="host">
+        <p>
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </p>
+    </div>
+
+    <template>
+        <style>
+            /* Псевдо класс, который позволяет стилизовать shadow host в определении шаблона */
+            :host {
+                border:1px solid red;
+                padding: 10px;
+            }
+        </style>
+        <content></content>
+    </template>
+
+    <script>
+        var host = document.querySelector("#host");
+        var root = host.createShadowRoot();
+        var template = document.querySelector("template");
+        root.appendChild(document.importNode(template.content, true));
+    </script>
+</body>
+</html>

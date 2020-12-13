@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Функции обратного вызова</title>
+
+    <script>
+        function doOperation(callback) {
+            // выполнение некоторых операций...
+            callback();
+        }
+
+        function showAlert() {
+            alert("Hello from callback")
+        }
+
+        // Функции - это объекты, то есть их можно передавать как аргументы другим функциям.
+        // Если в функцию doOperation передать в качестве параметра другую функцию, это означает, что функция doOperation
+        // вызовет ее в какой-то момент времени.
+        doOperation(showAlert);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

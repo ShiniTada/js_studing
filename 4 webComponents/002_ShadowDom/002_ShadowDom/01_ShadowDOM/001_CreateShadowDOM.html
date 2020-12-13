@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Shadow DOM Creating</title>
+
+    <!--Стили будут применены только к Light DOM-->
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hello from Light DOM</h1>
+
+    <!-- shadow host -->
+    <div id="host"></div>
+
+    <template>
+        <style>
+            h1 {
+                color: green;
+            }
+        </style>
+
+        <h1>Hello world from Shadow DOM</h1>
+    </template>
+
+    <script>
+        var template = document.querySelector("template");
+        // Получение shadow host
+        var host = document.querySelector("#host");
+        // Создание shadow root
+        var root = host.createShadowRoot();
+        // создание поддерева DOM
+        root.appendChild(document.importNode(template.content, true));
+    </script>
+</body>
+</html>

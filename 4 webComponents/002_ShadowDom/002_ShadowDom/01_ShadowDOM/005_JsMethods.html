@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Shadow DOM</title>
+</head>
+<body>
+    <!-- JavaScript код размещенный в Shadow DOM не будет инкапсулирован.
+         Так как не зависимо от расположения JS кода он выполняется в контексте глобального объекта window-->
+
+    <div id="host">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <template>
+        <h1>List container</h1>
+        <content id="placeholder"></content>
+    </template>
+
+    <script>
+        var host = document.querySelector("#host");
+        var root = host.createShadowRoot();
+        var template = document.querySelector("template");
+        var clone = document.importNode(template.content, true);
+        root.appendChild(clone);
+
+        // getDistributedNodes - возвращает список узлов размещенных в <content> элементе.
+        var distributedNodes = root.querySelector("#placeholder").getDistributedNodes();
+        console.log(distributedNodes);
+
+        // getDestinationInsertionPoints - возвращает списко элементов в которые были помещены выбранные узлы.
+        var destinationInsertionPoints = document.querySelector("ul").getDestinationInsertionPoints();
+        console.log(destinationInsertionPoints);
+    </script>
+</body>
+</html>

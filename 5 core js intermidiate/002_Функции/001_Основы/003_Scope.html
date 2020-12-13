@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Область видимости функции. Подъм переменных.</title>
+</head>
+<body>
+    <script>
+        // В JavaScript есть две области видимости:
+        // глобальная - представленная объектом window (если среда выполнения сценария - браузер)
+        // локальная - представленна функцией.
+        // операторные скобки { и } не создают обалсть видимости как в других языках программирования.
+        
+        function myfunction() {
+            // var i, test;
+            // переменные i и test доступны в начале функции, хотя определяються далее в теле функции.
+            
+            console.log(i);     // undefined
+            console.log(test);  // undefined
+
+            for (var i = 0; i < 10; i++) {
+                var test = i;
+            }
+            
+            console.log(i);     // 10
+            console.log(test);  // 9
+        }
+
+        myfunction();
+    </script>
+</body>
+</html>

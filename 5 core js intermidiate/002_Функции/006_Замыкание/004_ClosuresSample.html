@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Замыкание</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" id="size-16">16</a>
+    <a href="#" id="size-20">20</a>
+    <a href="#" id="size-24">24</a>
+
+    <script>
+        function makeSizer(size) {
+            return function () {
+                document.body.style.fontSize = size + 'px';
+            };
+        }
+
+        // замыкания с различными значениями переменной size
+        var size16 = makeSizer(16);
+        var size20 = makeSizer(20);
+        var size24 = makeSizer(24);
+
+        document.getElementById('size-16').onclick = size16;
+        document.getElementById('size-20').onclick = size20;
+        document.getElementById('size-24').onclick = size24;
+    </script>
+</body>
+</html>

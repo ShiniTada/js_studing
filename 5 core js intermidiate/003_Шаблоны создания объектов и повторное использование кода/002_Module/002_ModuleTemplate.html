@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Шаблон открытия модуль</title>
+</head>
+<body>
+    <!--Сценарий для создания пространства имен-->
+    <script>
+        var App = App || {};
+
+        App.define = function (namespace) {
+            var parts = namespace.split("."),
+                parent = App,
+                i;
+
+            // убрать начальный префикс если это имя глобальной переменной
+            if (parts[0] == "App") {
+                parts = parts.slice(1);
+            }
+
+            // если в глобальном объекте нет свойства - создать его.
+            for (i = 0; i < parts.length; i++) {
+
+                if (typeof parent[parts[i]] == "undefined") {
+                    parent[parts[i]] = {};
+                }
+
+                parent = parent[parts[i]];
+            }
+            return parent;
+        }
+    </script>
+
+    <script>
+        // определяем пространство имен
+        App.define("util.calc");
+
+        // инициализируем объект используя немелденно вызываемую функцию.
+        App.util.calc = (function () {
+
+            // закрытые члены
+            var x, y;
+
+            function privateAdd() {
+                return x + y;
+            }
+
+            function privateSetX(val) {
+                x = val;
+            }
+
+            function privateSetY (val) {
+                y = val;
+            }
+
+            return {
+                // открытые доступа к определенным методам.
+                add: privateAdd,
+                setX: privateSetX,
+                setY: privateSetY
+            }
+        }());
+
+    </script>
+
+    <script>
+        (function () {
+            var calc = App.util.calc;
+
+            calc.setX(2);
+            calc.setY(3);
+
+            document.write(calc.add());
+        }());
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!--
+
+    Рекурсивный вызов функций (самовызов).
+    Вызов функции из самой функции
+-->
+
+<html>
+<head>
+    <title>Рекурсия</title>
+
+    <script type="text/javascript">
+
+        function f(counter) {//функция принимает параметр counter
+
+            counter--;//уменшается параметр на 1
+
+            document.write("<p style='background-color:lightblue;'>Первая половина метода: " + counter);
+
+            if (counter != 0)//проводим проверку если counter не равен 0
+                f(counter);//вызываем функцию заново и уменьшаем counter еще раз
+            //после того, как условие не выполняется выводится следующее сообщение
+            document.write("<p style='background-color:yellow;'>Вторая половина метода: " + counter);
+        }
+
+        f(3);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

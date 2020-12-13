@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Литералы массивов</title>
+</head>
+<body>
+    <script>
+        var a = new Array("Hello", "world", "!");
+        var b = ["Hello", "world", "!"];
+
+        document.write(typeof a + "<br />");
+        document.write((a.constructor === Array) + "<br />");
+
+        document.write(typeof b + "<br />");
+        document.write((b.constructor === Array) + "<br />");
+    </script>
+</body>
+</html>

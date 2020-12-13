@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Недостатки конструктора</title>
+</head>
+<body>
+    <script>
+        // Конструктор Object может принимать параметр и делегировать вызов другому
+        // встроенному конструктору, вернув в результате объект другого типа.
+
+        var obj = new Object();
+        console.log(obj.constructor === Object);    // true
+
+        var obj = new Object(1);
+        console.log(obj.constructor === Number);    // true
+        console.log(obj.toFixed(3));                // 1.000
+        
+        var obj = new Object("Hello world");
+        console.log(obj.constructor === String);    // true
+
+        var obj = new Object(true);
+        console.log(obj.constructor === Boolean);   // true
+
+    </script>
+</body>
+</html>

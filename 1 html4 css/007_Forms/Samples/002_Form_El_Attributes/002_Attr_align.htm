@@ -1,0 +1,40 @@
+<!--
+    Выравнивание элементов с помощью CSS стилей
+    label - элемент разметки для создания подписей к элементам управления на форме
+    с помощью атрибута for можно указать id элемента управления к которому привязан данный label
+    атрибут accesskey содержит клавишу которую необходимо зажать вместе с клавишей alt для того чтобы
+    связанный элемент управления получил фокус
+-->
+
+<style type="text/css">
+    label 
+         {
+           width: 200px;
+           float: left;
+         }
+</style>
+<html>
+<head>
+    <title>Label</title>
+</head>
+<body>
+    <form>
+        <br />
+        
+        <label for="first_name" accesskey="a">Enter your first name: </label>
+        <input type="text" id="first_name" name="first_name" value="Ivan" />
+        <br />
+
+        <label for="sec_name" accesskey="s">Enter your second name:</label>
+        <input type="text" id="sec_name" name="sec_name" value="Ivanov" />
+        <br />
+        
+        <label for="psw" accesskey="p">Enter your password:</label>
+        <input type="password" id="psw" name="psw" />
+        <br />
+        <input type="submit" name="submit" value="Enter" />
+        <br />
+        <input type="reset" name="reset" value="Reset" />
+    </form>
+</body>
+</html>

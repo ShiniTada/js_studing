@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование копированием свойств</title>
+</head>
+<body>
+    <script>
+        function extend(parent, child) {
+            var i;
+            child = child || {}; // проверка наличия второго аргумента.
+            for (i in parent) {
+                if (parent.hasOwnProperty(i)) { // если свойство является свойством объекта parent то копируем его.
+                    child[i] = parent[i]; // объекты и массивы при копировании передаются по ссылке
+                }
+            }
+            return child;
+        }
+
+        var base = {
+            id: "0",
+            name: "base object",
+            innerArray: [1, 2, 3] // при использовании функции extend массив будет передан по ссылке.
+        };
+
+        var child = {};
+
+        extend(base, child);
+
+        child.innerArray.push(4);
+        console.log(child.innerArray == base.innerArray); // true
+        console.log(base.innerArray); // 1,2,3,4
+        console.log(child.innerArray); // 1,2,3,4
+    </script>
+</body>
+</html>

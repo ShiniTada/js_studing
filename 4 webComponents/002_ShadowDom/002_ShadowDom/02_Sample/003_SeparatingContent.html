@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Отделение контента</title>
+</head>
+<body>
+    <div id="nameBlock">Дмитрий</div>
+
+    <template id="nameBlockTemplate">
+        <style>
+            .block {
+                border: 2px solid blue;
+                background: #89b0ff;
+                width: 11em;
+                height: 5em;
+                text-align: center;
+            }
+
+            .header {
+                color: white;
+                padding: 0.2em;
+            }
+
+            .name {
+                color: black;
+                background: white;
+                font-size: 25pt;
+                padding-top: 0.1em;
+            }
+        </style>
+
+        <div class="block">
+            <div class="header">
+                Привет! Меня зовут
+            </div>
+            <div class="name">
+                <!-- content - элемент в который будет помещаться контент shadow host элемента-->
+                <content></content>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        var shadow = document.querySelector('#nameBlock').createShadowRoot();
+        var template = document.querySelector('#nameBlockTemplate');
+        var clone = document.importNode(template.content, true);
+        shadow.appendChild(clone);
+    </script>
+
+</body>
+</html>

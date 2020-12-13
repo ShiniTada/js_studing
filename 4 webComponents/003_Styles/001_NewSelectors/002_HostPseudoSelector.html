@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Host Pseudo Selector</title>
+</head>
+<body>
+    <themed-block>
+        <p>
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </p>
+    </themed-block>
+
+    <themed-block class="blue-theme">
+        <p>
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </p>
+    </themed-block>
+
+    <themed-block class="green-theme">
+        <p>
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </p>
+    </themed-block>
+
+    <template>
+        <style>
+            /* Псевдо класс, который позволяет стилизовать shadow host в определении шаблона */
+            :host {
+                border-radius: 3px;
+                padding: 10px;
+                margin: 10px;
+                display: block;
+                border: 1px solid #e3e3e3;
+            }
+
+            :host(.blue-theme) {
+                color: white;
+                background: -moz-linear-gradient(top, #1e5799 0, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, #1e5799 0,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, #1e5799 0,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            }
+
+            :host(.green-theme) {
+                color: white;
+                background: -moz-linear-gradient(top, #b4ddb4 0, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, #b4ddb4 0,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, #b4ddb4 0,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            }
+        </style>
+        <content></content>
+    </template>
+
+    <script>
+        var ThemedBlockProto = Object.create(HTMLDivElement.prototype);
+
+        ThemedBlockProto.createdCallback = function () {
+            var root = this.createShadowRoot();
+            var template = document.querySelector("template");
+            root.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("themed-block", {
+            prototype: ThemedBlockProto
+        });
+    </script>
+</body>
+</html>

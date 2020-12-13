@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование импортов</title>
+    <!-- Импорт HTML файла -->
+    <link rel="import" href="list.html" id="list-import" />
+
+    <!-- Динамическое создание link элемента -->
+    <script>
+        var link = document.createElement("link");
+        link.rel = "import";
+        link.href = "list.html";
+        link.id = "list-import";
+        document.head.appendChild(link);
+    </script>
+
+    <!-- Импорт JavaScript файла -->
+    <script src="JavaScript.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+

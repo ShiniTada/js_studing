@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование прототипа</title>
+</head>
+<body>
+    <script>
+        function User(name) {
+            this.name = name;
+
+            // Создавая метод в объекте бессмысленно расходуется память, так как
+            // каждый новый объект созданный этой функцией-конструктором будет содержать в себе копию метода.
+            // this.say = function () {
+            //     document.write("Hello! My name is " + name + ".");
+            // }
+        }
+
+        // Хорошей практикой является добавление методов к прототипу функции-конструктора.
+        User.prototype.say = function () {
+            document.write("Hello! My name is " + this.name + ".");
+        }
+
+        var u = new User("Ivan");
+        u.say();
+
+    </script>
+</body>
+</html>

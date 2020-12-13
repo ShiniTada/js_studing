@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Custom Elements</title>
+</head>
+<body>
+    <!-- Создание пользовательского компонента -->
+    <helloworld-component></helloworld-component>
+
+    <script>
+        // Определение прототипа, который базируется на прототипе HTML элемента
+        var HelloWorldComponentProto = Object.create(HTMLElement.prototype);
+
+        // Определение функции обратного вызова, которая сработает после создания элемента
+        HelloWorldComponentProto.createdCallback = function () {
+            this.innerHTML = "<h3>Hello world</h3>";
+        };
+
+        // Регистрация нового элемента.
+        // При определении имени компонента, необходимо обязательно в имени указать хотя бы один символ '-'
+        var HelloWorldComponent = document.registerElement("helloworld-component", {
+            prototype: HelloWorldComponentProto
+        });
+
+    </script>
+</body>
+</html>
+

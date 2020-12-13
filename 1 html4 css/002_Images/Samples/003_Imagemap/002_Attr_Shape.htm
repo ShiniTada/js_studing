@@ -1,0 +1,22 @@
+﻿<!--
+Атрибут Shape может принимать следующие значения:
+    rect - прямоугольник, требуется передать 2 точки(по 2 координаты у каждой)
+    circle - круг, требуется передать точку и радиус
+    poly - полигон, необходимо передать произвольное количество точек
+-->
+
+<html>
+    <head>
+        <title>Image Map - карта-изображение</title>
+    </head>
+    <body>
+        <img src="images/imageforarea.jpg" usemap="#mymap"/>
+        
+        <map name="mymap" id="mymap">
+          <area href="#" shape="rect" coords="27, 24, 196, 183" alt="rectangle" title="rectangle" />
+          <area href="#" shape="circle" coords="534, 108, 70" alt="circle" title="circle" />
+          <area href="#" shape="poly" coords="289, 237, 292, 327, 378, 355, 429, 275, 375, 206" alt="polygon" title="polygon" />
+        </map>
+    
+    </body>
+</html>

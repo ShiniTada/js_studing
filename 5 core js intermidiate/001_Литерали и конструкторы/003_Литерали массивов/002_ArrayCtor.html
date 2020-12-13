@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Недоастатки конструктора Array</title>
+</head>
+<body>
+    <script>
+        var a = new Array(); // пустой массив
+        var b = new Array("Hello", "world", "!"); // массив на три элемента со значениями
+
+        // если конструктору массива передать одно значение оно НЕ станет первым элементом массива.
+        var c = new Array(10); // пустой массив на 10 элементов
+        var d = new Array(3.5); // ошибка, значение длины массива недопустимое
+    </script>
+</body>
+</html>
+

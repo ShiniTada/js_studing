@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <button id="lightDomButton">Light DOM Button</button>
+
+    <div id="host"></div>
+
+    <template>
+        <!--
+            События, которые происходят в shadow DOM перебрасываются в Light DOM
+            при этом источником соыбтия устанавливается shadow host.
+            Некоторые события не перебрасываются в Light DOM - 
+            abort, error, select, change, load, reset, resize, scroll, selectstart.
+        -->
+        <button id="shadowDomButton">Shadow DOM Button</button>
+    </template>
+
+    <script>
+        var template = document.querySelector("template");
+        var shadowRoot = document.querySelector("#host").createShadowRoot();
+        shadowRoot.appendChild(document.importNode(template.content, true));
+
+        document.addEventListener("click", function (e) {
+            console.log(e.target.id);
+        });
+
+    </script>
+</body>
+</html>

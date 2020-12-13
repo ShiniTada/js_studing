@@ -1,0 +1,36 @@
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\ResolveAssemblyReference.cache
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\ResolveAssemblyReference.cache
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+D:\Work\Lessons\ASP.NET Base v2\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\ASP.NET Base\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\ASP.NET Base\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\ASP.NET Base\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\ASP.NET Base\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\ASP.NET Base\009_AJAX_Basis\01_AJAX_Basics_JavaScript\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\jQuery\jQuery\Teacher\Урок a10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\jQuery\jQuery\Teacher\Урок a10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\jQuery\jQuery\Teacher\Урок a10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\jQuery\jQuery\Teacher\Урок a10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+C:\Users\Alex\Documents\CyberBionic Systematics\Курсы исходники\jQuery\jQuery\Teacher\Урок a10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+D:\Lessons\jQuery\Teacher\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+D:\Lessons\jQuery\Teacher\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+D:\Lessons\jQuery\Teacher\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.csprojResolveAssemblyReference.cache
+D:\Lessons\jQuery\Teacher\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+D:\Lessons\jQuery\Teacher\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb
+D:\Lessons\jQuery\Student\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+D:\Lessons\jQuery\Student\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+D:\Lessons\jQuery\Student\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.csprojResolveAssemblyReference.cache
+D:\Lessons\jQuery\Student\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+D:\Lessons\jQuery\Student\Урок 10. Ajax в jQuery\Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb
+F:\QA курсов и разработка\New folder\jQuery\Урок 9. Ajax в jQuery\001_Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll.config
+F:\QA курсов и разработка\New folder\jQuery\Урок 9. Ajax в jQuery\001_Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.dll
+F:\QA курсов и разработка\New folder\jQuery\Урок 9. Ajax в jQuery\001_Samples\AJAX_Basics_JavaScript\bin\AJAX_Basics_JavaScript.pdb
+F:\QA курсов и разработка\New folder\jQuery\Урок 9. Ajax в jQuery\001_Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.csprojResolveAssemblyReference.cache
+F:\QA курсов и разработка\New folder\jQuery\Урок 9. Ajax в jQuery\001_Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.dll
+F:\QA курсов и разработка\New folder\jQuery\Урок 9. Ajax в jQuery\001_Samples\AJAX_Basics_JavaScript\obj\Debug\AJAX_Basics_JavaScript.pdb

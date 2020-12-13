@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование конструктора Object</title>
+</head>
+<body>
+    <script>
+        // пустой объект
+        var user = new Object();
+
+        // добавляем к объекту свойство.
+        user.name = "admin";
+
+        // добавляем метод.
+        user.getName = function () {
+            return user.name;
+        }
+    </script>
+</body>
+</html>

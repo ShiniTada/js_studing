@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Injection Data</title>
+</head>
+
+<body>
+
+    <template>
+        <p>Template name <span id="template-name"></span>.</p>
+        <p>Has been copied <span id="template-count"></span> times.</p>
+    </template>
+
+    <button id="add-button">Add template</button>
+    <script>
+        (function () {
+
+            var templateCounter = 0;
+
+            window.addEventListener("load", function () {
+                // обработчик нажатия по кнопке
+                document.querySelector("#add-button").addEventListener("click", function () {
+
+                    // Создание шаблона
+                    var template = document.querySelector("template");
+                    var templateClone = document.importNode(template.content, true);
+
+                    // Внедрение данных в шаблон
+                    templateClone.querySelector("#template-name").textContent = "My Tempalte";
+                    templateClone.querySelector("#template-count").textContent = ++templateCounter;
+
+                    // Размещение шаблона в конце страницы
+                    document.body.appendChild(templateClone);
+                })
+
+            })
+        })();
+
+    </script>
+</body>
+
+</html>

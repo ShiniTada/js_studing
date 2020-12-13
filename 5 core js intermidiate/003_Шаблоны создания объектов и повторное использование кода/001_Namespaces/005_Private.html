@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Закрытые свойства и методы</title>
+</head>
+<body>
+    <script>
+        var obj1 = {
+            name: "Jhon Doe",
+            getName: function () {
+                return this.name;
+            }
+        }
+
+        console.log(obj1.name);    // "Jhon Doe" - открытый член
+        console.log(obj1.getName); // "function" - открытый член
+
+
+        function Obj2() {
+            // закрытый
+            var name = "Ivan Ivanov";
+
+            // открытый
+            this.getName = function () {
+                return name;
+            }
+        }
+
+        var obj2 = new Obj2();
+        console.log(obj2.name);    // "undefined" - закрытый член
+        console.log(obj2.getName); // "function" - открытый член
+    </script>
+</body>
+</html>

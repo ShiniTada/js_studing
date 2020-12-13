@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Проблема - отделение представления от логики</title>
+    <style>
+        .block {
+            border: 2px solid blue;
+            background: #89b0ff;
+            width: 11em;
+            height: 5em;
+            text-align: center;
+        }
+
+        .header {
+            color: white;
+            padding: 0.2em;
+        }
+
+        .name {
+            color: black;
+            background: white;
+            font-size: 25pt;
+            padding-top: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- В DOM дереве отсутствует инкапсуляция. Если другие элементы на странице будут использовать такие же классы для
+         стилизации или для создания сценариев, могут возникнуть конфликты и неправильное поведение. -->
+    <div class="block">
+        <div class="header">
+            Привет! Меня зовут
+        </div>
+        <div class="name">
+            Дмитрий
+        </div>
+    </div>
+
+</body>
+</html>
+

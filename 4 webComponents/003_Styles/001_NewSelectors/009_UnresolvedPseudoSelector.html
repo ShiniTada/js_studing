@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>:unresolved</title>
+    <style>
+        my-list {
+            opacity: 1;
+            border: 1px solid red;
+            display:block;
+            min-height:20px;
+        }
+            /*
+            :unresolved псевдо класс, который будет использоваться для пользовательских элементов,
+            для которых не отработал метод createdCallback
+        */
+            my-list:unresolved {
+                opacity:0;
+            }
+    </style>
+</head>
+<body>
+    <my-list>
+    </my-list>
+
+    <template id="list1">
+        <ul>
+            <li>Item 01</li>
+            <li>Item 02</li>
+            <li>Item 03</li>
+            <li>Item 04</li>
+            <li>Item 05</li>
+            <li>Item 06</li>
+            <li>Item 07</li>
+            <li>Item 08</li>
+        </ul>
+    </template>
+
+    <script>
+
+        alert('loading');
+
+        // До тех пор, пока не будет вызван метод createdCallback, для браузера
+        // my-list будет неопределенным элементом.
+        // Для того, чтобы не показывать пользователю элемент, который еще не полностью инициализирован
+        // можно использовать псевдо класс :unresolved
+
+        var MyListProto = Object.create(HTMLDivElement.prototype);
+        MyListProto.createdCallback = function () {
+            var root = this.createShadowRoot();
+            var template = document.querySelector("#list1");
+            root.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("my-list", {
+            prototype: MyListProto
+        });
+    </script>
+</body>
+</html>

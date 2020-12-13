@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Создание пользовательских конструкторов</title>
+</head>
+<body>
+    <script>
+        function User(name) {
+            this.name = name;
+            this.say = function () {
+                document.write("Hello! My name is " + name + ".");
+            }
+        }
+        
+        // При вызове функции с оператором new происходит следующее
+        // 1. Создается пустой объект.
+        // 2. Пустой объект наследует свойства и методы прототипа функции.
+        // 3. Ссылка на этот объект сохраняется в переменной this.
+        // 4. В функции-конструкторе добавляются новые свойства и методы в пустой объект.
+        // 5. В конце функции неявно возвращается объект на который ссылается this.
+
+        /*
+            function User(name) {
+                // создаться пустой объект
+                // this = {}
+
+                // добавляются свойства и методы
+                this.name = name;
+                this.say = function () {
+                    document.write("Hello! My name is " + name + ".");
+                }
+
+                // return this;
+            }
+        */
+
+        var u = new User("Ivan");
+        u.say();
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Инстанцирование пользовательских элементов</title>
+</head>
+<body>
+    <script>
+        // Определение прототипа, который базируется на прототипе HTML элемента
+        var HelloWorldComponentProto = Object.create(HTMLElement.prototype);
+
+        // Определение функции обратного вызова, которая сработает после создания элемента
+        HelloWorldComponentProto.createdCallback = function () {
+            this.innerHTML = "<h3>Hello world</h3>";
+        };
+
+        // Регистрация нового элемента.
+        var HelloWorldComponent = document.registerElement("helloworld-component", {
+            prototype: HelloWorldComponentProto
+        });
+
+    </script>
+
+    <!-- Вариант 1 -->
+    <helloworld-component></helloworld-component>
+
+    <script>
+        // Вариант 2
+        var component1 = new HelloWorldComponent();
+        document.body.appendChild(component1);
+
+        // Вариант 3
+        var component2 = document.createElement("helloworld-component");
+        document.body.appendChild(component2);
+
+        // Вариант 4
+        document.body.innerHTML += "<helloworld-component></helloworld-component>";
+    </script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Определение функций на этапе инициализации</title>
+</head>
+<body>
+    <script>
+        var utils = {
+            // добавление обработчика на событие
+            addListener: function (e, type, fn) {
+                if (typeof window.addEventListener === "function") {
+                    e.addEventListener(type, fn, false);
+                }
+                else if (typeof document.attachEvent === "function") {
+                    e.attachEvent("on" + type, fn);
+                }
+                else {
+                    e["on" + type] = fn;
+                }
+            },
+
+            // удаление обработчика с события
+            removeListener: function (e, type, fn) {
+                if (typeof window.removeEventListener === "function") {
+                    e.removeEventListener(type, fn, false);
+                }
+                else if (typeof document.detachEvent === "function") {
+                    e.detachEvent("on" + type, fn);
+                }
+                else {
+                    e["on" + type] = null;
+                }
+            }
+        };
+
+        // Реализация методов объекта utils не оптимальна, так как при каждом вызове addListener или removeListener
+        // выполняется один и тот же набор проверок.
+
+        utils.addListener(window, "load", function () {
+            var testBtn = document.getElementById("test"),
+                removeBtn = document.getElementById("removeHandler");
+
+            function say() {
+                alert("Hello world");
+            }
+
+            utils.addListener(testBtn, "click", say)
+
+            utils.addListener(removeBtn, "click", function () {
+                utils.removeListener(testBtn, "click", say);
+            })
+        });
+
+    </script>
+
+    <button id="test">Тест</button>
+    <button id="removeHandler">Удалить обработчик</button>
+</body>
+</html>
+

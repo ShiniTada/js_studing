@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование. Шаблон №2</title>
+
+    <script>
+
+        // родительский конструктор
+        function Parent(name) {
+            this.name = name || "Adam";
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        Parent.prototype.say = function () {
+            alert("Hello my name is " + this.name);
+        }
+
+        // дочерний конструктор.
+        function Child(name) {
+            // Вызов конструктора Parent с передачей ссылки на пустой объект, который должна заполнить данная функция конструктор.
+            // По сути в этом конструкторе копируются все свойства из объекта Parent в объект Child.
+            Parent.apply(this, arguments);
+        }
+
+
+        var kid = new Child("Ivan");
+        alert (kid.name)
+
+
+        // Недостатки шаблона:
+        // Не наследуются свойства и методы прототипа родителя, вызвать метод say на объекте kid сейчас не возможно.
+        
+    </script>
+</head>
+<body>
+</body>
+</html>

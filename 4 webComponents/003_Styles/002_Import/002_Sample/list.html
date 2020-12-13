@@ -1,0 +1,23 @@
+﻿<p id="messageText">Only one item available.</p>
+<ul>
+    <li>Item 01</li>
+    <li>Item 02</li>
+    <li>Item 03</li>
+</ul>
+
+<script>
+    // Получение доступа к DOM дереву текущего документа
+    var importDoc = document.currentScript.ownerDocument;
+
+    window.addEventListener('load', function () {
+
+        var button = document.querySelector("#getMessgaeButton");
+
+        button.addEventListener("click", function () {   
+            var text = importDoc.querySelector("#messageText").innerText;
+
+            // Получение доступа к DOM дереву документа в который будет выполнен импорт.
+            document.querySelector("#output").innerText = text;
+        });
+    });
+</script>

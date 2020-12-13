@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>No Selectors</title>
+</head>
+
+<body>
+
+	<template>
+		<p>Hello world from template</p>
+	</template>
+
+	<script>
+		// Для шаблонов не работают селекторы
+		var pInTemplate = document.querySelector("template p");
+		console.log(pInTemplate); // null
+	</script>
+
+</body>
+
+</html>

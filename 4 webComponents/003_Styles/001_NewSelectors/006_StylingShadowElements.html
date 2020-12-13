@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>::Shadow</title>
+    <style>
+        /*
+            Стили, заданные через такой селектор, не будут применены к элементам my-list,
+            так как содержимое my-list находиться в Shadow DOM
+        */
+        li {
+            color: red;
+        }
+
+        /*
+            При использовании псевдо класса ::shadow можно обратиться к элементам Shadow DOM
+        */
+        my-list::shadow li {
+            color: orange;
+        }
+
+        /*
+            h2 элемент размещенный в my-list относиться к light DOM. Этот элемент является Distributed Node
+            Так как через <content> элемент выводиться в составе шаблона.
+        */
+        h2 {
+            background-color: lightblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <my-list>
+        <h2>Header of the list</h2>
+    </my-list>
+
+    <template>
+        <content></content>
+        <ul>
+            <li>Item 01</li>
+            <li>Item 02</li>
+            <li>Item 03</li>
+            <li>Item 04</li>
+            <li>Item 05</li>
+            <li>Item 06</li>
+            <li>Item 07</li>
+            <li>Item 08</li>
+        </ul>
+    </template>
+
+    <script>
+        var MyListProto = Object.create(HTMLDivElement.prototype);
+        MyListProto.createdCallback = function () {
+            var root = this.createShadowRoot();
+            var template = document.querySelector("template");
+            root.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("my-list", {
+            prototype: MyListProto
+        });
+    </script>
+</body>
+</html>
+

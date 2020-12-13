@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Distributed Nodes styling</title>
+</head>
+<body>
+    <div id="host">
+        <input type="text" />
+        <button>My Button</button>
+    </div>
+
+    <template>
+        <style>
+            /* 
+                ::content псевдо класс позволяет оформить distributed nodes (элементы из light DOM, которые были
+                помещены в элемент <content>)
+            */
+            ::content button {
+                color: red;
+            }
+
+            ::content input {
+                border: 1px dotted black;
+            }
+        </style>
+        <content></content>
+    </template>
+
+    <script>
+        var host = document.querySelector("#host");
+        var root = host.createShadowRoot();
+        var template = document.querySelector("template");
+        root.appendChild(document.importNode(template.content, true));
+    </script>
+</body>
+</html>

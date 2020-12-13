@@ -1,0 +1,25 @@
+﻿<template>
+    <style>
+        div {
+            color: green;
+        }
+    </style>
+    <div>Component A</div>
+</template>
+
+<script>
+    (function () {
+        var ComponentAProto = Object.create(HTMLElement.prototype);
+        var importDoc = document.currentScript.ownerDocument;
+
+        ComponentAProto.createdCallback = function () {
+            var template = importDoc.querySelector("template");
+            var root = this.createShadowRoot();
+            root.appendChild(document.importNode(template.content, true));
+        };
+
+        document.registerElement('component-a', {
+            prototype: ComponentAProto
+        });
+    })();
+</script>

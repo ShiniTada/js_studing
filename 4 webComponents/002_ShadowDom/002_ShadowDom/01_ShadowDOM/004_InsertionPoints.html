@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Insertion Points</title>
+</head>
+<body>
+    <my-form>
+        <h1>Моя форма</h1>
+        <p>
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </p>
+        <div class="footer">
+            Конец формы
+        </div>
+    </my-form>
+
+    <template>
+        <fieldset>
+            <legend>
+                <!-- content элемент представляет точку внедрения контента
+                атрибут select позволяет указать, какие элементы из light DOM должны быть помещены в content.
+                В данный элемент content будут помещены все элементы подходящие под селектор "h1"-->
+                <content select="h1"></content>
+            </legend>
+
+            <!-- В данные элемент будут помещены все элементы выбранные селектором "p" -->
+            <content select="p"></content>
+
+            Field 1 <input type="text" /> <br />
+            Field 2 <input type="text" /> <br />
+            Field 3 <input type="text" />
+        </fieldset>
+
+        <!-- В данные элемент будут помещены все элементы выбранные селектором ".footer" -->
+        <content select=".footer"></content>
+    </template>
+
+    <script>
+        var MyFormProto = Object.create(HTMLElement.prototype);
+
+        MyFormProto.createdCallback = function () {
+            var template = document.querySelector("template");
+            var shadow = this.createShadowRoot();
+            shadow.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("my-form", {
+            prototype: MyFormProto
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Шаблоны принудительного использования ключевого слова new</title>
+</head>
+<body>
+    <script>
+        // Данная функция всегда будет возвращать объект даже если будет вызвана без ключевого слова new
+        // Недостаток заключается в том что будет утеряна связь с прототипом.
+        function User(name) {
+            var that = {};
+            that.name = name;
+            return that;
+        }
+
+        var a = new User("Ivan");
+        document.write(a.name);
+
+        // без ключевого слова new
+        var b = User("Ivan");
+        document.write("<br />b = " + b.name);
+        document.write("<br />window.name = " + window.name);
+
+    </script>
+</body>
+</html>

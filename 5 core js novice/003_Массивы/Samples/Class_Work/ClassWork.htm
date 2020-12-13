@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+        var arr0 = new Array();// функция
+        console.log(typeof (arr0));
+
+        var arr3 = [];
+        console.log(typeof (arr3)); // объект
+
+        var arr1 = [] + [];// строка
+        console.log(typeof (arr1));
+
+        console.log([]+[]);//пустая строка
+        var obj = {} + {};// строка
+        console.log(typeof (obj));
+        console.log({} + {});//объект плюс объект
+        var str = new String('object');
+        for (var i = 0; i < str.length; i++) {
+            console.log(str[i]);
+            console.log(typeof (str[i]));//строка
+        }
+        console.log(typeof (str));//объект
+
+        var arr2 = new Array();
+        arr2.test() = 5;
+        arr2[1] = 3;
+        console.log(arr2[0]);//undefined
+        console.log(arr2[1]);//3
+        console.log(arr2[test]);//анонимная функция :)
+        console.log(arr2.test);//5
+    </script>
+
+</head>
+<body>
+</body>
+</html>

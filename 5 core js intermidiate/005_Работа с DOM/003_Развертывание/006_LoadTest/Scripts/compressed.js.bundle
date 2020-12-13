@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="compressed.js">
+  <!--The order of the <file> elements determines the order of them when bundled.-->
+  <file>/08_Развертывание/006_LoadTest/Scripts/jquery-1.7.1.js</file>
+  <file>/08_Развертывание/006_LoadTest/Scripts/jquery-ui-1.8.20.js</file>
+  <file>/08_Развертывание/006_LoadTest/Scripts/jquery.unobtrusive-ajax.js</file>
+  <file>/08_Развертывание/006_LoadTest/Scripts/jquery.validate.js</file>
+  <file>/08_Развертывание/006_LoadTest/Scripts/jquery.validate.unobtrusive.js</file>
+  <file>/08_Развертывание/006_LoadTest/Scripts/knockout-2.1.0.js</file>
+</bundle>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Жизненный цикл пользовательских элементов</title>
+</head>
+<body>
+
+    <button id="create-button">Create</button>
+    <button id="change-button">Change Attr</button>
+    <button id="remove-button">Remove</button>
+
+    <script>
+        // #region Custom Element
+        var HelloWorldComponentProto = Object.create(HTMLElement.prototype);
+
+        // createdCallback - экземпляр пользовательского компонента создан
+        HelloWorldComponentProto.createdCallback = function () {
+            this.innerHTML = "<h3>Hello world</h3>";
+            console.log("created");
+        };
+
+        // attachedCallback - экземпляр пользовательского компонента добавлен в DOM дерево
+        HelloWorldComponentProto.attachedCallback = function () {
+            console.log("attached");
+        };
+
+        // detachedCallback - экземпляр пользовательского компонента удален из DOM дерева
+        HelloWorldComponentProto.detachedCallback = function () {
+            console.log("detached");
+        };
+
+        // attributeChangedCallback - атрибут пользовательского компонента добавлен, удален или изменен
+        HelloWorldComponentProto.attributeChangedCallback = function (attrName, oldValue, newValue) {
+            console.log("Attribute " + attrName + " old value " + oldValue + " new value is " + newValue);
+        };
+
+        var HelloWorldComponent = document.registerElement("helloworld-component", {
+            prototype: HelloWorldComponentProto
+        });
+        // #endregion
+
+        window.addEventListener("load", function () {
+
+            var component;
+
+            // создание элемента.
+            document.querySelector("#create-button").addEventListener("click", function () {
+                component = new HelloWorldComponent();
+                document.body.appendChild(component);
+            });
+
+            // изменение атрибута.
+            document.querySelector("#change-button").addEventListener("click", function () {
+                component.setAttribute("data-test", 123);
+            });
+
+            // удаление компонента из DOM дерева.
+            document.querySelector("#remove-button").addEventListener("click", function () {
+                component.remove();
+            });
+        });
+    </script>
+</body>
+</html>
+

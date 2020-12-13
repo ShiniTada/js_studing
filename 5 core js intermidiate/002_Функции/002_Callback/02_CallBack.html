@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Пример функции обратного вызова</title>
+</head>
+<body>
+    <p>
+        Paragraph 1
+    </p>
+    <p>
+        Paragraph 2
+    </p>
+    <p>
+        Paragraph 3
+    </p>
+    <p>
+        Paragraph 4
+    </p>
+    <p>
+        Paragraph 5
+    </p>
+    <p>
+        Paragraph 6
+    </p>
+    <p>
+        Paragraph 7
+    </p>
+    <p>
+        Paragraph 8
+    </p>
+    <p>
+        Paragraph 9
+    </p>
+    <p>
+        Paragraph 10
+    </p>
+
+    <script>
+        // Для того что бы функция была максимально универсальной она только возвращает узлы документа не изменяя их.
+        function findNodes() {
+            var nodes = [],
+                pArray = [];
+
+            pArray = document.getElementsByTagName("p");
+
+            // Сложный цикл для выбора узлов страницы.
+            for (var i = 0; i < pArray.length; i++) {
+                nodes.push(pArray[i]);
+            }
+
+            return nodes;
+        }
+
+        // Функция для изменения узлов.
+        function makeBorder(nodes) {
+            var i = 0, max = nodes.length;
+            for (; i < max; i += 1) {
+                nodes[i].style.border = "solid 1px green";
+            }
+        }
+
+        // данный вызов не оптимальный, так как два раза выполняется цикл обхода элементов документа.
+        makeBorder(findNodes());
+
+    </script>
+
+</body>
+</html>

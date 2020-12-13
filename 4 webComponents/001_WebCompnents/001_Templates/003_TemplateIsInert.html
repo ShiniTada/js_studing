@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Inert Template</title>
+</head>
+
+<body>
+
+	<template>
+		<p>Hello world from template</p>
+		
+		<!--Скрипт не выполнится до тех пор пока шаблон не станет частью DOM дерева-->
+		<script>
+			alert("hi");
+		</script>
+		
+		<!--Изображение не будет отображаться до тех пор пока шаблон не будет скопирован в DOM дерево-->
+		<img src="myImage.jpg" />
+	</template>
+
+	<script>
+		var template = document.querySelector("template");
+		var templateClone = document.importNode(template.content, true);
+		// Сценарий и изображение из шаблона начнут работать только после клонирования шаблона в DOM дерево
+		document.body.appendChild(templateClone);
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Number</title>
+</head>
+<body>
+    <script>
+        var a = 100; // простое число
+
+        var b = new Number(100); // объект со значением 100
+
+        document.write(typeof a + "<br />");    // number
+        document.write(typeof b + "<br />");    // object
+
+        var str = "hello world"; // простое значение
+        // при вызове toUpperCase() строка временно преобразовывается в объект String
+        document.write(str.toUpperCase() + "<br />");
+
+        // свойства и методы можно вызывать непосредственно на значении
+        document.write("hello".length);
+
+    </script>
+</body>
+</html>

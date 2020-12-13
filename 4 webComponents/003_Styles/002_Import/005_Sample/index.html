@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использованеи Sub-Import</title>
+    <link rel="import" href="component-a.html" />
+    <link rel="import" href="component-b.html" />
+</head>
+<body>
+    <!--
+        Оба компонента используют внешнюю зависимость - jQuery
+        Но с помощью sub-import код организован таким образом, что загрузка библиотеки происходит централизовано в
+        отдельно импорте, что позволяет избежать дублирования запросов и избавиться от возможных конфликтов разных версий библиотек
+    -->
+    <component-a></component-a>
+    <component-b></component-b>
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Получение доступа к дереву DOM</title>
+</head>
+<body>
+    <div id="test"></div>
+    <script>
+        // АНТИШАБЛОН
+        for (var i = 0; i < 100; i++) {
+            // обращаться к DOM на каждой итерации цикла не оптимально.
+            document.getElementById("test").innerHTML += i + ", ";
+        }
+    </script>
+</body>
+</html>

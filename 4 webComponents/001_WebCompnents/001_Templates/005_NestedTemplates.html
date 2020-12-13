@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Nested Templates</title>
+</head>
+<body>
+    <template id="header">
+        <h1>Header</h1>
+        <template id="body">
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </template>
+    </template>
+
+    <script>
+        // При наличии вложенных шаблонов их необходимо инициализировать по отдельности.
+        var template = document.querySelector("#header");
+        var clone = document.importNode(template.content, true);
+        document.body.appendChild(clone);
+
+        // До тех пор пока предыдущий шаблон не будет добавлен в DOM дерево .querySelector("#body") не сможет его найти.
+        var template = document.querySelector("#body");
+        var clone = document.importNode(template.content, true);
+        document.body.appendChild(clone);
+    </script>
+</body>
+</html>

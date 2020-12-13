@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Div Position Absolute</title>
+
+    <style type="text/css">
+        
+        div {
+            text-align: center;
+            width: 150px;
+            height: 150px;
+			position: absolute;
+            /*position: relative;*/
+        }
+
+        #GreenBlock {
+			left: 12px;
+			top: 5px;
+            background-color: Green;
+            border: 1px solid black;
+        }
+
+        #RedBlock {
+            top: 30px;
+            left: 130px;
+            background-color: Red;
+            border: 1px solid black;
+        }
+
+        #YellowBlock {
+            left: 12px;
+            top: 5px;
+            background-color: Yellow;
+            border: 1px solid black;
+            
+			/*z-index: 5;*/
+			/*opacity: 0.4;*/
+        }
+
+        .WhiteBlock {
+            margin: 15px;
+            border: 1px dashed black;
+			background: #fff;
+        }
+
+        .BlueBlock {
+            width: 150px;
+            height: 150px;
+            background: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="WhiteBlock">
+        <!-- <div id="GreenBlock">
+            <p style="margin: 25px">In Its Place</p>                      
+        </div> -->
+    </div>
+
+    <div class="BlueBlock">
+        <!-- <div id="YellowBlock" >
+            <p style="margin: 25px">top:5px;<br />left:120px;</p>
+        </div> -->
+    </div>
+
+    <!-- <div class="WhiteBlock">
+        <div id="RedBlock">
+            <p style="margin: 25px">top:30px;<br />left:130px;</p>
+        </div>
+    </div> -->
+
+</body>
+</html>
+

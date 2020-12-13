@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Изменение элементов DOM</title>
+</head>
+<body>
+    <div id="test">Hello world</div>
+    <script>
+        // Предпочтительней получить ссылку на объект и далее работать с этой ссылкой
+        var e = document.getElementById("test");
+        e.style.padding = "10px";
+        e.style.border = "1px solid black";
+    </script>
+</body>
+</html>

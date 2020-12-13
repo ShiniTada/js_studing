@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Обработка событий загрузки импортов</title>
+
+    <!-- Сценарии должны быть определены до того как будет выполнен импорт -->
+    <script>
+        function completed(event) {
+            console.log("import completed");
+        }
+
+        function error(event) {
+            console.log("couldn't load file " + event.target.href);
+        }
+    </script>
+
+    <link rel="import" href="file1.html" onload="completed(event)" onerror="error(event)" />
+</head>
+<body>
+    <h1>
+        Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+    </h1>
+</body>
+</html>
+

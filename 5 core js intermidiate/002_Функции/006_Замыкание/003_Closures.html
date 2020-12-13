@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Замыкание</title>
+</head>
+<body>
+    <script>
+        function makeAdder(x) {
+            return function (y) {
+                return x + y;
+            };
+        }
+
+        // замыкание с переменной x со значением 5
+        var add5 = makeAdder(5);
+
+        // замыкание с переменной x со значением 10
+        var add10 = makeAdder(10);
+
+        alert(add5(2));  // 7
+        alert(add10(2)); // 12
+    </script>
+    
+</body>
+</html>

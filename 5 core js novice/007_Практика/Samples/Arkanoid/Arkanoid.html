@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        window.onload = function () {
+            (function (fld, pF, px, dx, dy, lifes, score) {
+                var cycle = setInterval(function () {
+                    var bx = pF(ball.style.left = pF(ball.style.left) + dx + 'px') | 0,
+                      by = pF(ball.style.top = pF(ball.style.top) + dy + 'px') | 0,
+                      row = ((by - 30) / 14) | 0, col = (bx / 32) | 0;
+
+                    if (bx < 0 && dx < 0 || bx >= 314 && dx > 0) dx *= -1;
+                    if (bx + 6 >= px && bx <= px + 58 && by >= 259 && by <= 264) {
+                        dy *= -1;
+                        if (bx <= px + 15) dx = -6;
+                        else if (bx >= px + 37) dx = 6;
+                        else if (Math.abs(dx) === 6) dx = (dx * 2 / 3) | 0;
+                    }
+                    if (by < 0) dy *= -1;
+                    if (by >= 288 && !--lifes) clearInterval(cycle), alert('Game over!');
+                    if (by >= 288 && lifes) dy *= -1, lifesNode.innerHTML = lifes;
+                    if (by >= 18 && by <= 100 && fld[row * 10 + col].className != 'removed') {
+                        dy *= -1, fld[row * 10 + col].className = 'removed';
+                        if (dx < 0 && (bx % 32 < 10 || bx % 32 > 22)) dx *= -1;
+                        if (dx > 0 && ((bx + 12) % 32 < 10 || (bx + 12) % 32 > 22)) dx *= -1;
+                        scoreNode.innerHTML = ++score;
+                        if (score == 50) clearInterval(cycle), alert('Victory!');
+                    }
+                }, 1000 / 60);
+
+                document.addEventListener('mousemove', function (e) {
+                    px = (e.pageX > 40) ? ((e.pageX < 290) ? e.pageX - 40 : 256) : 0;
+                    paddle.style.left = px + 'px';
+                }, false);
+            })(field.children, parseFloat, 129, -4, -4, 3, 0);
+        }
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 8px;
+            cursor: none !important;
+        }
+
+        #field {
+            width: 322px;
+            height: 270px;
+            padding-top: 30px;
+            border: 1px solid #ccc;
+            font-size: 0;
+            position: relative;
+        }
+
+        .brick,
+        .removed {
+            width: 28px;
+            height: 10px;
+            margin: 1px;
+            display: inline-block;
+            border: 1px solid;
+        }
+
+        .brick {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cdd), color-stop(100%, #777));
+            background: -webkit-linear-gradient(top, #cdd 0%, #777 100%);
+            background: linear-gradient(to bottom, #cdd 0%, #777 100%);
+            border-color: #777 #777 #000 #000;
+            border-radius: 3px;
+        }
+
+            .brick:nth-child(2n) {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(100%, #777));
+                background: -webkit-linear-gradient(top, #ccc 0%, #777 100%);
+                background: linear-gradient(to bottom, #ccc 0%, #777 100%);
+            }
+
+            .brick:nth-child(5n) {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(100%, #008));
+                background: -webkit-linear-gradient(top, #ccc 0%, #008 100%);
+                background: linear-gradient(to bottom, #ccc 0%, #008 100%);
+            }
+
+            .brick:nth-child(3n) {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(100%, #080));
+                background: -webkit-linear-gradient(top, #ccc 0%, #080 100%);
+                background: linear-gradient(to bottom, #ccc 0%, #080 100%);
+            }
+
+            .brick:nth-child(7n) {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(100%, #808));
+                background: -webkit-linear-gradient(top, #ccc 0%, #808 100%);
+                background: linear-gradient(to bottom, #ccc 0%, #808 100%);
+            }
+
+            .brick:nth-child(11n) {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(100%, #880));
+                background: -webkit-linear-gradient(top, #ccc 0%, #880 100%);
+                background: linear-gradient(to bottom, #ccc 0%, #880 100%);
+            }
+
+        .removed {
+            border-color: transparent;
+        }
+
+        #paddle {
+            width: 62px;
+            height: 5px;
+            border: 1px solid #777;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cdd), color-stop(100%, #777));
+            background: -webkit-linear-gradient(top, #cdd 0%, #777 100%);
+            background: linear-gradient(to bottom, #cdd 0%, #777 100%);
+            position: absolute;
+            left: 128px;
+            top: 270px;
+            border-radius: 3px;
+        }
+
+        #ball {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #955;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fdd), color-stop(100%, #500));
+            background: -webkit-linear-gradient(top, #fdd 0%, #500 100%);
+            background: linear-gradient(to bottom, #fdd 0%, #500 100%);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        #lifesNode,
+        #scoreNode {
+            position: absolute;
+            right: -85px;
+            font: 14px arial, helvetica, sans-serif;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 1px 0;
+            width: 75px;
+            text-align: center;
+        }
+
+        #lifesNode {
+            top: 20px;
+        }
+
+            #lifesNode:before {
+                content: 'lifes: ';
+            }
+
+        #scoreNode {
+            top: 50px;
+        }
+
+            #scoreNode:before {
+                content: 'score: ';
+            }
+    </style>
+</head>
+<body>
+    <div id="field">
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+        <div class="brick"></div>
+
+        <div id="paddle"></div>
+        <div id="ball" style="left: 154px; top: 258px;"></div>
+        <div id="lifesNode">3</div>
+        <div id="scoreNode">0</div>
+    </div>
+</body>
+</html>

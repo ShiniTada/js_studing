@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Добавление узлов</title>
+</head>
+<body>
+    <script>
+        var p, t, fragment;
+        // Doument Fragment - фрагмент документа в который можно добавлять дочерние элементы. При этом дочерние элементы
+        // фрагмента не будут отображаться на странице до тех пор пока фрагмент не станет дочерним элементом существующего элемента DOM.
+
+        fragment = document.createDocumentFragment();
+
+        p = document.createElement("p");
+        t = document.createTextNode("First paragraph");
+        p.appendChild(t);
+        fragment.appendChild(p); // добавление элемента в фрагмент
+
+        p = document.createElement("p");
+        t = document.createTextNode("Second paragraph");
+        p.appendChild(t);
+        fragment.appendChild(p); // добавление элемента в фрагмент
+
+        document.body.appendChild(fragment); // добавление фрагмента в тело документа.
+        // все элементы которые есть в фрагменте станут дочерними элементами документа.
+    </script>
+</body>
+</html>
+

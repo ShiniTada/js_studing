@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование шаблонов совместно с пользовательскими элементами</title>
+</head>
+<body>
+    <my-element>
+        Содержимое my-element
+    </my-element>
+
+    <template>
+        <h1>
+            <content></content>
+        </h1>
+    </template>
+
+    <script>
+
+        var MyElementProto = Object.create(HTMLElement.prototype);
+        MyElementProto.createdCallback = function () {
+            var template = document.querySelector("template");
+            var host = this.createShadowRoot();
+            host.appendChild(document.importNode(template.content, true));
+        };
+
+        document.registerElement("my-element", {
+            prototype: MyElementProto
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Использование метода apply</title>
+
+    <script>
+        var arr = [1, 4, 7, 2, 34, 734, 1, 33, 667, 3, 56, 778, 1, 80];
+        var maxValue = Math.max.apply(null, arr); // поиск максимального значения в массиве.
+        // вызов метода Math.max.apply(null, arr) идентичен вызову Math.max(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);
+        alert(maxValue);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

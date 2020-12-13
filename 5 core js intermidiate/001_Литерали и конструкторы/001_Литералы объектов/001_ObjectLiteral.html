@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Создание объекта</title>
+</head>
+<body>
+    <script>
+        // пустой объект.
+        var user = {};
+
+        // добавляем к объекту свойство.
+        user.name = "admin";
+
+        // добавляем метод.
+        user.getName = function () {
+            return user.name;
+        }
+
+        // во время выполнения программы можно:
+        // 1. добавлять новые свойства и методы в объект
+        // 2. менять свойства и методы объекта
+        // 3. удалять свойства и методы.
+
+        // изменение метода.
+        user.getName = function () {
+            return "anonymous";
+        }
+
+        // добавление еще одного свойства.
+        user.newProperty = "Hello world";
+
+        // удаление свойства.
+        delete user.newProperty;
+    </script>
+</body>
+</html>

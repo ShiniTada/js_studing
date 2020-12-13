@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+    <script type="text/javascript">
+        /*
+        JSON (JavaScript Object Notation) - простой формат обмена данными, удобный для чтения и написания как человеком, 
+        так и компьютером. Он основан на подмножестве языка программирования JavaScript, 
+        определенного в стандарте ECMA-262 3rd Edition - December 1999. JSON - текстовый формат, 
+        полностью независимый от языка реализации, но он использует соглашения, знакомые программистам C-подобных языков, 
+        таких как C, C++, C#, Java, JavaScript, Perl, Python и многих других. Эти свойства делают JSON идеальным языком обмена данными. 
+        */
+
+        var b = { "prop2": "plus", "prop3": "minus" };
+        console.log(b);
+
+        var obj1 = new Object();
+        obj1.prop1 = "hhh";
+        console.log(obj1);
+        var str = JSON.stringify(obj1);
+        console.log(str);
+        obj1 = JSON.parse(str);
+        console.log(obj1);
+
+        function Puma() {
+            this.name = 'Murchik';
+            this.eat = function () { document.write('I\'m eating!'); };
+        };
+        var Tiger = new Puma;
+        Tiger.eat();
+
+        myDoc = new Object();
+        myDoc.Doc1 = new Object();
+        myDoc.color = 'pink';
+        myDoc.printColor = function () { };
+        myDoc.Doc1.printColor = myDoc.printColor;
+        myDoc.Doc1.printColor();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

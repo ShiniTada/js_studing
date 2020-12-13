@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Наследование через прототип</title>
+</head>
+<body>
+    <!--Имеется некоторый объект, который можно было бы использовать повторно, 
+        необходимо создать второй объект, использующий функциональные возможности первого -->
+
+    <script>
+        // функция создает новый объект, который будет использовать прототип указанного объекта
+        function createObj(obj) {
+            function F() { }
+            F.prototype = obj;
+            return new F();
+        }
+
+        var base = {
+            name: "Jhon"
+        };
+
+        var derived = createObj(base);
+
+        alert(derived.name);
+        alert(derived.hasOwnProperty("name"))
+
+    </script>
+</body>
+</html>

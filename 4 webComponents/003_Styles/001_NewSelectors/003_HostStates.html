@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Host Pseudo Selector</title>
+</head>
+<body>
+    <themed-block>
+        <p>
+            Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+        </p>
+    </themed-block>
+
+    <template>
+        <style>
+            /* Псевдо класс который, позволяет стилизовать shadow host в определении шаблона */
+            :host {
+                border-radius: 3px;
+                padding: 10px;
+                margin: 10px;
+                display: block;
+                border: 1px solid #e3e3e3;
+            }
+
+            /* Стили для Shadow host элемента, на который навели курсор */
+            :host(:hover) {
+                background-color: green;
+            }
+
+            /* Стили для Shadow Host элемента, на котором выполнили клик */
+            :host(:active) {
+                background-color: green;
+                color: red;
+            }
+        </style>
+        <content></content>
+    </template>
+
+    <script>
+        var ThemedBlockProto = Object.create(HTMLDivElement.prototype);
+
+        ThemedBlockProto.createdCallback = function () {
+            var root = this.createShadowRoot();
+            var template = document.querySelector("template");
+            root.appendChild(document.importNode(template.content, true));
+        }
+
+        document.registerElement("themed-block", {
+            prototype: ThemedBlockProto
+        });
+    </script>
+</body>
+</html>
+

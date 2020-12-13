@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Расширение элементов</title>
+</head>
+<body>
+    <script>
+        var ItvdnMessageBlockProto = Object.create(HTMLDivElement.prototype);
+
+        ItvdnMessageBlockProto.createdCallback = function () {
+            this.innerHTML = "<a href='http://itvdn.com/ru/video/html5-and-css3'>HTML5 and CSS3</a>";
+            this.style.border = "1px solid gray";
+            this.style.padding = "15px";
+        };
+
+        var ItvdnMessageBlock = document.registerElement("itvdn-message", {
+            prototype: ItvdnMessageBlockProto,
+            extends: "div"
+        });
+    </script>
+
+    <!--Вариант 1-->
+    <div is="itvdn-message"></div>
+
+    <script>
+        // Вариант 2
+        var div1 = document.createElement("div", "itvdn-message");
+        document.body.appendChild(div1);
+
+        // Вариант 3
+        document.body.appendChild(new ItvdnMessageBlock());
+
+        // Вариант 4
+        document.body.innerHTML += "<div is='itvdn-message'></div>";
+    </script>
+</body>

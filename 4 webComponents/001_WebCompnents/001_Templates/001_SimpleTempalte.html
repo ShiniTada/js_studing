@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>WebComponents Intro</title>
+</head>
+
+<body>
+
+	<template>
+		<p>Hello world from template</p>
+	</template>
+
+	<script>
+		// получение шаблона
+		var template = document.querySelector("template");
+		// клонирование шаблона, true - глубокое клонирование всего содержимого шаблона
+		var templateClone = document.importNode(template.content, true);
+		// добавление содержимого шаблона в DOM дерево
+		document.body.appendChild(templateClone);
+	</script>
+
+</body>
+
+</html>

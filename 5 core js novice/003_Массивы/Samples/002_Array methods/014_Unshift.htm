@@ -1,0 +1,32 @@
+﻿<!--
+
+            unshift() - добавляет элемент в начало массива. Смещает существующие элементы в сторону больших индексов
+                        для освобождения места, добавляет элемент или элементы в начало массива и возвращает новую длину массива.
+
+-->
+
+<html>
+<head>
+    <title>Метод UnShift()</title>
+
+    <script type="text/javascript">
+
+        var arr = [1, 2, 3];
+        document.write("<p>Исходный массив: " + arr.join(" "));
+
+        document.write("<hr/>");
+
+        arr.unshift(0);
+        document.write("<p>Массив после сдвига: " + arr.join(" "));
+
+        document.write("<hr/>");
+
+        arr.unshift(-3, -2, -1);
+        document.write("<p>Массив после сдвига: " + arr.join(" "));
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

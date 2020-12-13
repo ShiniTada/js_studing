@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Самоопределяемые функции</title>
+</head>
+<body>
+    <script>
+        var initialize = function ()
+        {
+            alert("Инициализация");
+
+            // выполнение операций инициализации.
+
+            say = function () {
+                alert("Инициализация уже завершена");
+            }
+        }
+
+        // вызов самоопределяемой функции
+        say(); // Инициализация
+        say(); // Инициализация уже завершена
+    </script>
+</body>
+</html>

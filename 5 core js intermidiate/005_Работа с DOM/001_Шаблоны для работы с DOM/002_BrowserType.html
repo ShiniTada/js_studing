@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Определение типа браузера</title>
+</head>
+<body>
+    <script>
+
+        // Предпочтительно
+        if (document.attachEvent) {
+            document.attachEvent("onclick", function () {
+                console.log("clicked");
+            });
+        }
+
+        if (typeof document.attachEvent !== "undefined") {
+            document.attachEvent("onclick", function () {
+                console.log("clicked");
+            });
+        }
+
+    </script>
+</body>
+</html>

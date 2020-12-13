@@ -1,0 +1,29 @@
+﻿<!--С помощью вкладки network инструментов разработчика, 
+    убедитесь в том, что обращение к библиотеке jQuery происходит только один раз--> 
+<link rel="import" href="jquery.html" />
+
+<template>
+    <style>
+        div {
+            color: green;
+        }
+    </style>
+    <div>Component A</div>
+</template>
+
+<script>
+    (function () {
+        var ComponentAProto = Object.create(HTMLElement.prototype);
+        var importDoc = document.currentScript.ownerDocument;
+
+        ComponentAProto.createdCallback = function () {
+            var template = importDoc.querySelector("template");
+            var root = this.createShadowRoot();
+            root.appendChild(document.importNode(template.content, true));
+        };
+
+        document.registerElement('component-a', {
+            prototype: ComponentAProto
+        });
+    })();
+</script>

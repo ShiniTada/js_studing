@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Custom Elements</title>
+    <!--
+        С помощью Bower установите пакет с именем webcomponetnsjs в папку с исходным кодом приложения
+        Инструкции по установке Bower - http://bower.io/
+        Инструкции по установке polyfill webcomponentsjs - http://webcomponents.org/polyfills/
+    -->
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+</head>
+<body>
+    <helloworld-component></helloworld-component>
+    
+    <script>
+        var HelloWorldComponentProto = Object.create(HTMLElement.prototype);
+
+        HelloWorldComponentProto.createdCallback = function () {
+            this.innerHTML = "<h3>Hello world</h3>";
+        };
+        var HelloWorldComponent = document.registerElement("helloworld-component", {
+            prototype: HelloWorldComponentProto
+        });
+
+    </script>
+</body>
+</html>
+

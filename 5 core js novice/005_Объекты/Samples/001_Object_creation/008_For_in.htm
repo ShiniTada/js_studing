@@ -1,0 +1,48 @@
+﻿<!--
+
+            Циклическая конструкция for in, используется для перебора
+            элементов массива или перебора свойств объекта.
+
+            Принцип работы конструкции:
+            for ( переменная_итерации in массив_или_обьект) { ...тело конструкции ...}
+
+-->
+
+<html>
+<head>
+    <title>Конструкция for in</title>
+
+    <script type="text/javascript">
+
+        var house = {
+            roof: "<img src='Images/Roof.gif'/><br/>",
+            secondFloor: "<img src='Images/SecondFloor.gif'/><br/>",
+            firstFloor: "<img src='Images/FirstFloor.gif'/><br/>",
+            basement: "<img src='Images/Basement.gif'/><br/>",
+            address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+            
+        }
+
+        // Перебор значений свойств в обьекте - house
+        for (var element in house) {         // создание той переменной, которая будет перебирать свойства в объекте house
+            document.write(house[element]);  //выводим на екран переменную которая перебирала свойство
+        }
+
+        //цикл for/in не проходит по всем элементам массива(свойствам объекта), а перебирает перечисленные
+        var arr = [];
+        var _ind = 0;
+        arr[0] = true;
+        arr[4] = 1;
+        arr[122] = 'people';
+        for (_ind in arr) {
+            arr[3] = false; // созданный элемент массива в цикле for/in не всегда отобразиться самим циклом
+            console.log(_ind);
+        };
+        console.log(arr[3]);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>
