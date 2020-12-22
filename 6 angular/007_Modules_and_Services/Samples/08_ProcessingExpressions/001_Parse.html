@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<!--сервис $parse позволяет превращать angularjs выражения в функции которые могут обрабатывать данные-->
+<html ng-app="exampleApp">
+<head>
+    <title>$parse service</title>
+    
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.price = "100.23";
+            $scope.data = [2, 1, 4, 51];
+        })
+        .directive("evalExpression", function ($parse) {
+            return function (scope, element, attrs) {
+                scope.$watch(attrs["evalExpression"], function (newValue) {
+                    try {
+                        // С помощью сервиса $parse получаем значение свойства expr и превращаем его в функцию.
+                        var expressionFn = $parse(scope.expr);
+                        // Применяем функцию для scope выполняя выражение.
+                        var result = expressionFn(scope);
+                        if (result == undefined) {
+                            result = "No result";
+                        }
+                        else {
+                            console.log(result);
+                        }
+                    } catch (err) {
+                        result = "Cannot evaluate expression";
+                    }
+                    element.text(result);
+                });
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <!--price | currency - попробуйте ввести данную строку в поле ввода-->
+        <p><input class="form-control" ng-model="expr" /></p>
+        <div>
+            Result: <span eval-expression="expr"></span>   
+        </div>
+    </div>
+</body>
+</html>

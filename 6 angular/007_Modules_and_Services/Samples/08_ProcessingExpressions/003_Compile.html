@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title>Compile</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.cities = ["London", "Paris", "New York"];
+        })
+        .directive("evalExpression", function ($compile) {
+            return function (scope, element, attrs) {
+                var content = "<ul><li ng-repeat='city in cities'>{{city}}</li></ul>";
+                var listElem = angular.element(content);
+                // $compile создает функцию на основе HTML кода, которую можно будет использовать для генерации разметки.
+                var compileFn = $compile(listElem);
+                // Выполняем компиляцию. Создаем контент выполняя выражения привязки.
+                compileFn(scope);
+                // Добавляем готовый контент на страницу
+                element.append(listElem);
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <span eval-expression></span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+
+<head>
+    <title>Expressions</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.dataValue = "10.55";
+        })
+        .directive("evalExpression", function ($interpolate) {
+            // $interpolate - строку преобразовывает в функцию. В отличии от $parse сервиса может принмать строку с произвольными
+            // данными и AngularJS выражениями привязки.
+            var interpolationFn = $interpolate("The total is: {{total | currency}} (including tax)");
+            return {
+                scope: {
+                    amount: "=amount",
+                    tax: "=tax"
+                },
+                link: function (scope, element, attrs) {
+                    scope.$watch("amount", function (newValue) {
+                        var localData = {
+                            total: Number(newValue)
+                            + (Number(newValue) * (Number(scope.tax) / 100))
+                        }
+                        
+                        element.text(interpolationFn(localData));
+                    });
+                }
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+    <div class="well">
+        <p><input class="form-control" ng-model="dataValue" /></p>
+        <div>
+            <span eval-expression amount="dataValue" tax="10"></span>
+        </div>
+    </div>
+</body>
+</html>

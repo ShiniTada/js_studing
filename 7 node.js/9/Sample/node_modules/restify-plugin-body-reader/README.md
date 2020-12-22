@@ -1,0 +1,1 @@
+This package is extracted automatically from [restify](https://github.com/mcavage/node-restify), go there for documentation!

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+<head>
+    <title>DOM API Service</title>
+
+    <script src="../Libraries/angular.js"></script>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("exampleApp", [])
+        .controller("defaultCtrl", function ($scope, $log) {
+            $scope.log = function () {
+                $log.log("Log message");
+                $log.debug("Log message");
+                $log.warn("Log message");
+                $log.error("Log message");
+                $log.info("Log message");
+            }
+        });
+    </script>
+</head>
+<body ng-controller="defaultCtrl" class="well">
+    <button class="btn btn-primary" ng-click="log()">LOG!</button>
+</body>
+</html>
