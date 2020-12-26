@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dependency Injection</title>
+</head>
+<body>
+    <script>
+		// Опишем интерфейс Плэйстэйшена
+		function AbstractPlayStation(properties) {
+			this.launch = function(gameName) {
+				console.log("Method not implemented");
+			}
+		}
+		
+		// Имплементация интерфейса №1
+		function PlayStation4(properties){
+			this.featureInviteFriends = properties.featureEnabled;
+			this.launch = function(gameName) {
+				console.log("It is Play Station 4. " + gameName + " is started! Feature Invite friends " 
+					+ (!!this.featureInviteFriends ? "enabled." : "disabled."));
+			}
+			return this;
+		}
+
+		PlayStation4.prototype = AbstractPlayStation;
+	
+		// Имплементация интерфейса №2 
+		function PlayStation5(properties){
+			this.feature5D = properties.featureEnabled;
+			this.launch = function(gameName) {
+				console.log("It is Play Station 5. " + gameName + " is started! Feature 5D " 
+					+ (!!this.feature5D ? "enabled." : "disabled."));
+			}
+			return this;
+		}
+
+		PlayStation5.prototype = AbstractPlayStation;
+	
+		var PS_TYPE = "PlayStation";
+
+		//singletone
+		function IoC() {
+			IoC.cache = [];
+		
+		}
+		IoC.cache = [];	
+		IoC.getInstance = function() {
+				if(!IoC.instance) {
+					IoC.instance = new IoC();
+				}
+				return IoC.instance;
+			}
+		
+
+		
+		IoC.prototype.addClass = function(type, service) {
+			IoC.cache.push({type: type, name: service.name, func: service});
+		}
+		
+		IoC.prototype.getPlayStationFromFactory = function(serviceName, properties) {
+			var cache = IoC.cache; 
+			for(var i in cache) {
+				if(cache[i].type === PS_TYPE && cache[i].name === serviceName) {
+					var obj = cache[i].func(properties);
+					return obj;
+				}
+			}
+			console.log("Cannot find service with name " + serviceName);
+		}
+
+		IoC.prototype.hasPlayStationInFactory = function(serviceName) {
+			var cache = IoC.cache; 
+			for(var i in cache) {
+				if(cache[i].type === PS_TYPE && cache[i].name === serviceName) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		IoC.getInstance().addClass(PS_TYPE, PlayStation4);
+		IoC.getInstance().addClass(PS_TYPE, PlayStation5);
+	
+    </script>
+	
+    <script>
+		//Бизнес-функция:
+		function play(deviceName, gameName, useFeature) {
+			var ioc = IoC.getInstance();
+			if (!ioc.hasPlayStationInFactory(deviceName)) {
+				console.log("Cannot find device: " + deviceName + ". Choose another one.");
+				return;
+			}
+			var device = ioc.getPlayStationFromFactory(deviceName, {featureEnabled: useFeature});
+			device.launch(gameName);
+		}
+		
+		//Вызов
+		play("PlayStation5", "Game of Thrones", false);
+		play("PlayStation4", "Detroid became human", true);
+		play("PlayStation4", "Quantum break");
+		play("PC", "Control");
+
+    </script>
+</body>
+</html>
+
