@@ -2,10 +2,14 @@ var MongoClient = require('mongodb').MongoClient;
 var persons = require('./persons');
 
 
-var url = 'mongodb://localhost:27017/userCollectionDB';
+var userName = 'ReadWriteUser'
+var pass = '###'
+var dbname = 'userCollectionDB'
+var url = 'mongodb+srv://' + userName + ':'+ pass + '@clustername.2wk9k.mongodb.net/"' + dbname + '"?retryWrites=true&w=majority';
 
 MongoClient.connect(url, function(err, db){
-    var collection = db.collection('users');
+    var dbo = db.db("mydb");
+    var collection = dbo.collection('users');
     // метод insertMany используется для добавления множества обьектов
     collection.insertMany(persons, function(err, results){
         if(err) throw err;

@@ -3,13 +3,19 @@
     // updateMany: обновляет все документы, которые соответствуют критерию фильтрации, и возвращает информацию об операции обновления
     // findOneAndUpdate: обновляет один документ, который соответствует критерию фильтрации, и возвращает обновленный документ
 
-var mongoClient = require("mongodb").MongoClient;
+var MongoClient = require("mongodb").MongoClient;
+
+
+var userName = 'ReadWriteUser'
+var pass = 'Password'
+var dbname = 'userCollectionDB'
+var url = 'mongodb+srv://' + userName + ':'+ pass + '@clustername.2wk9k.mongodb.net/"' + dbname + '"?retryWrites=true&w=majority';
  
 var users = [{name: "Bob", age: 34} , {name: "Alice", age: 21}, {name: "Tom", age: 45}];
  
-mongoClient.connect("mongodb://localhost:27017/userCollectionDB", function(err, db){
-     
-    var collection = db.collection("users");
+MongoClient.connect(url, function(err, db){
+    var dbo = db.db("mydb");
+    var collection = dbo.collection("users");
     collection.insertMany(users, function(err, results){
              
         collection.findOneAndUpdate(
